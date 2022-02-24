@@ -1,0 +1,54 @@
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+form{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+</style>
+<div class="d-flex flex-row justify-content-center">
+    <h1><u>PDF Classifier</u></h1>
+</div>
+
+ <div class="d-flex flex-row justify-content-center">
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+             {{form}}
+            <button class = 'btn btn-primary' type="submit">Upload</button>
+    </form>
+</div>
+<div class="d-flex flex-row">
+    <table class = 'table table-bordered'>
+        <tr>
+            <th>Matched KeyWords</th>
+            <td>{%for words in matched_words%}{{words}}, {%endfor%}</td>
+        </tr>
+        <tr>
+            <th>Division matched with</th>
+            <td>{{max_match}}</td>
+        </tr>
+        <tr>
+            <th># of keywords matched with tags and tag Synonyms</th>
+            <td>{{tag_count}}</td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
